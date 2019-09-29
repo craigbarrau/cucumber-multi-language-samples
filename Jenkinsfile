@@ -1,6 +1,10 @@
 pipeline {
 
   agent any
+  tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
+  }
 
   stages {
 
@@ -10,10 +14,11 @@ pipeline {
         }
     }
 	
-	stage('test'){
+    stage('build and unit test'){
         steps {
             dir('cucumber-with-java'){
-                sh "mvn test"
+                sh "mvn clean install"
+                junit 'target/surefire-reports/**/*.xml' 
             }
         }
     }
