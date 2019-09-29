@@ -1,2 +1,5 @@
 cucumber-with-java/target
+cucumber-with-java/.classpath
+cucumber-with-java/.project
+cucumber-with-java/.settings/
 cucumber-with-typescript/node_modules

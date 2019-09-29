@@ -5,13 +5,17 @@ pipeline {
   stages {
 
     stage('build'){
-      checkout scm
+        steps {
+            checkout scm
+        }
     }
 	
 	stage('test'){
-      dir('cucumber-with-java'){
-          sh "mvn test"
-      }
+        steps {
+            dir('cucumber-with-java'){
+                sh "mvn test"
+            }
+        }
     }
 
   }
