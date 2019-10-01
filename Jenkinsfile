@@ -2,18 +2,20 @@ pipeline {
 
   agent any
   tools {
-        maven 'Maven'
+    maven 'Maven'
   }
 
   stages {
 
     stage('build'){
+	agent { label 'docker' }
         steps {
             checkout scm
         }
     }
 	
     stage('build and unit test'){
+	agent { label 'docker' }
         steps {
             dir('cucumber-with-java'){
                 sh "mvn clean install"
