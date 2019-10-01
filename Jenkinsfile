@@ -4,6 +4,9 @@ pipeline {
   tools {
     maven 'Maven'
   }
+  environment {
+    MAVEN="/opt/maven/bin/mvn"
+  }
 
   stages {
 
@@ -18,7 +21,7 @@ pipeline {
 	agent { label 'docker' }
         steps {
             dir('cucumber-with-java'){
-                sh "mvn clean install"
+                sh "${MAVEN} clean install"
                 junit 'target/surefire-reports/**/*.xml' 
             }
         }
